@@ -1,16 +1,19 @@
 require 'pry-byebug'
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.all.order(:id)
+    render json: @todos
   end
 
   # GET /todos/1
   # GET /todos/1.json
   def show
+    render json: @todo
   end
 
   # GET /todos/new
@@ -70,6 +73,6 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      JSON.parse(params.require(:model))
+      params.require(:todo).permit("name", "complete")
     end
 end

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  match 'todos', to: 'todos#index', via: [:options]
+  match 'todos/:id', to: 'todos#show', via: [:options]
   resources :todos
   root 'todo#index'
+  # options '/todos' => 'todos#cors'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
