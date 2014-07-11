@@ -38,3 +38,5 @@ gem 'rails_12factor'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'pry-byebug'
+

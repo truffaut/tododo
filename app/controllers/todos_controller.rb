@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
@@ -69,6 +70,6 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params[:todo]
+      JSON.parse(params.require(:model))
     end
 end
